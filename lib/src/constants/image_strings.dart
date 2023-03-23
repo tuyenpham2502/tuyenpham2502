@@ -1,0 +1,1 @@
+const String google_img = 'assets/images/google_img.png';
