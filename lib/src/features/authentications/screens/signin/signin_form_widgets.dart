@@ -1,15 +1,20 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:learningflutter/src/comon_widgets/input_password_cus.dart';
 import 'package:learningflutter/src/comon_widgets/input_text_cus.dart';
 import 'package:learningflutter/src/constants/default_size.dart';
 import 'package:learningflutter/src/constants/text_strings.dart';
+import 'package:learningflutter/src/features/authentications/controller/signin_controller.dart';
+import 'package:learningflutter/src/respository/authentication-respository/exception/signin_email_password.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final _formKey = GlobalKey<FormState>();
+    final controller = Get.put(LoginController());
     return Form(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,7 +44,10 @@ class LoginForm extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: (){}, 
+                      onPressed: (){
+                        if(_formKey.currentState!.validate()){
+                        }
+                      }, 
                       child: Text(loginText.toUpperCase())
                     ),
                   ),

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:learningflutter/src/features/authentications/screens/login/login_screen.dart';
+import 'package:get/get.dart';
+import 'package:learningflutter/src/features/authentications/screens/signin/signin_screen.dart';
 import 'package:learningflutter/src/features/authentications/screens/signup/signup_screen.dart';
+import 'package:learningflutter/src/respository/authentication-respository/authentication-respository.dart';
 import 'package:learningflutter/src/untils/themes/themes.dart';
 import 'package:provider/provider.dart';
-import 'package:fluro/fluro.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -12,7 +13,7 @@ Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-  );
+  ).then(((value) => Get.put(AuthenticationRepository())));
   runApp(const MyApp());
 } 
 
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (BuildContext context, child) {
-        return MaterialApp(
+        return GetMaterialApp(
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: ThemeMode.system,

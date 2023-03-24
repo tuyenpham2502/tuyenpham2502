@@ -2,12 +2,13 @@
 import 'package:flutter/material.dart';
 
 class InputPasswordCus extends StatefulWidget {
-  const InputPasswordCus({super.key, this.hintText, this.labelText, this.border, this.prefixIcon});
+  const InputPasswordCus({super.key, this.hintText, this.labelText, this.border, this.prefixIcon, this.controller});
 
   final String? hintText;
   final String? labelText;
   final OutlineInputBorder? border;
   final Widget? prefixIcon;
+  final TextEditingController? controller;
 
   
 
@@ -21,6 +22,7 @@ class _MyWidgetState extends State<InputPasswordCus> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: widget.controller,
       obscureText: _obscureText,
       decoration: InputDecoration(
         hintText: widget.hintText,

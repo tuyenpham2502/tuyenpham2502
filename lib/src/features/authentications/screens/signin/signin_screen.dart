@@ -5,16 +5,16 @@ import 'package:learningflutter/src/comon_widgets/input_text_cus.dart';
 import 'package:learningflutter/src/constants/default_size.dart';
 import 'package:learningflutter/src/constants/image_strings.dart';
 import 'package:learningflutter/src/constants/text_strings.dart';
-import 'package:learningflutter/src/features/authentications/screens/login/login_form_widget.dart';
+import 'package:learningflutter/src/features/authentications/screens/signin/signin_form_widgets.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SigninScreen extends StatefulWidget {
+  const SigninScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SigninScreen> createState() => _SigninScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SigninScreenState extends State<SigninScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +47,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           label: const Text(loginWithGoogleText))),
                   SizedBox(height: defaultFormSize -20),
                   TextButton(
-                    onPressed: () {  },
+                    onPressed: () {
+                      
+                      },
                     child: Text.rich(
                       TextSpan(
                         text: dontHaveAccountText,
