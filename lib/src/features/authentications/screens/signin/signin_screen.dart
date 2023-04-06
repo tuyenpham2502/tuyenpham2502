@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:learningflutter/src/comon_widgets/input_password_cus.dart';
 import 'package:learningflutter/src/comon_widgets/input_text_cus.dart';
 import 'package:learningflutter/src/constants/default_size.dart';
 import 'package:learningflutter/src/constants/image_strings.dart';
 import 'package:learningflutter/src/constants/text_strings.dart';
+import 'package:learningflutter/src/features/authentications/controller/signin_controller.dart';
 import 'package:learningflutter/src/features/authentications/screens/signin/signin_form_widgets.dart';
 
 class SigninScreen extends StatefulWidget {
@@ -33,7 +35,6 @@ class _SigninScreenState extends State<SigninScreen> {
               SizedBox(height: defaultFormSize -20),
               Column(
                 children: [
-                  const Text(or),
                   SizedBox(height: defaultFormSize - 20),
                   SizedBox(
                       width: double.infinity,
@@ -45,10 +46,19 @@ class _SigninScreenState extends State<SigninScreen> {
                             height: 20,
                           ),
                           label: const Text(loginWithGoogleText))),
+                  
+                   SizedBox(
+                      width: double.infinity,
+                      child: OutlinedButton.icon(
+                          onPressed: () {
+                            LoginController.instance.signInWithGuest();
+                          },
+                          icon: const Icon(Icons.person_outline_outlined),
+                          label: const Text(loginWithGuestText))),
                   SizedBox(height: defaultFormSize -20),
                   TextButton(
                     onPressed: () {
-                      
+                        Get.offNamed("/signup");
                       },
                     child: Text.rich(
                       TextSpan(

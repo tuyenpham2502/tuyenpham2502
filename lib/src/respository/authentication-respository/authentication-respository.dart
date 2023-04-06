@@ -26,10 +26,9 @@ class AuthenticationRepository extends GetxController {
         : Get.offAll(() => const DashBoardScreen());
   }
 
-  Future<void> createUserWithEmailAndPassword(
+  Future<String?> createUserWithEmailAndPassword(
       String email, String password) async {
     try {
-      print("firebaseUser.value: ${firebaseUser.value}");
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       firebaseUser.value != null
@@ -37,25 +36,37 @@ class AuthenticationRepository extends GetxController {
           : Get.to(() => const SigninScreen());
     } on FirebaseAuthException catch (e) {
       final ex = SignUpEmailAndPasswordFailure.code(e.code);
-      print('FIREBASE AUTH EXCEPTION: ${ex.message}');
-      throw ex;
+      return ex.message;
     } catch (_) {
       const ex = SignUpEmailAndPasswordFailure();
-      print(' EXCEPTION: ${ex.message}');
-      throw ex;
+      return ex.message;
     }
+    return null;
   }
 
-  Future<void> signInWithEmailAndPassword(String email, String password) async {
+  Future<String?> signInWithEmailAndPassword(String email, String password) async {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
+       print("firebaseUser.value: ${firebaseUser.value}");
     } on FirebaseAuthException catch (e) {
       final ex = SignInEmailAndPasswordFailure.code(e.code);
-      print('FIREBASE AUTH EXCEPTION: ${ex.message}');
+      return ex.message;
     } catch (_) {
-      final ex = SignInEmailAndPasswordFailure();
-      print(' EXCEPTION: ${ex.message}');
+      const ex = SignInEmailAndPasswordFailure();
+      return ex.message;
     }
+    return null;
+  }
+
+  Future<FirebaseAuth> signInWithGuest() async {
+    try {
+      await _auth.signInAnonymously();
+    } on FirebaseAuthException catch (e) {
+      print('FIREBASE AUTH EXCEPTION: ${e.message}');
+    } catch (_) {
+      print(' EXCEPTION: ');
+    }
+    return _auth;
   }
 
   Future<void> signOut() async {
