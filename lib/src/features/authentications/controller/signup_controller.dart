@@ -11,7 +11,7 @@ class SignUpController extends GetxController {
   final password = TextEditingController();
   final confirmPassword = TextEditingController();
 
-  void registerUser(String email, String password) async {
-    AuthenticationRepository.instance.createUserWithEmailAndPassword(email, password);
+  Future<void> registerUser(String email, String password) async {
+  await AuthenticationRepository.instance.createUserWithEmailAndPassword(email, password);
   }
 }
