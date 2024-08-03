@@ -1,5 +1,5 @@
 # 💫 About Me:
-🔭 I’m currently working Nobisoft<br>🌱 I’m currently learning backend and mobile<br>💬 Ask me about reactjs and nextjs<br>⚡ Fun fact
+🔭 I’m currently working Nobisoft<br>🌱 I’m currently learning backend and mobile<br>💬 Ask me about reactjs and nextjs
 
 
 ## 🌐 Socials:
